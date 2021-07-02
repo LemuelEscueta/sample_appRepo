@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sample_app/SignInAnonButton.dart';
+import 'package:sample_app/Buttons/SignInAnonButton.dart';
 
 import '../InputField.dart';
-import '../LoginButton.dart';
+import '../Buttons/LoginButton.dart';
 
 class InputWrapper extends StatelessWidget{
   @override
