@@ -1,5 +1,5 @@
-class User {
+class TheUser {
   final String uid;
 
-  User({ required this.uid});
+  TheUser({ required this.uid});
 }

@@ -9,12 +9,14 @@ class Wrapper extends StatelessWidget{
   @override
   Widget build(BuildContext context){
 
-    final dynamic user = Provider.of<User>(context);
+    final user = Provider.of<TheUser>(context);
 
     if(user == null){
+      print('Logged out');
       return Authenticate();
     }
     else {
+      print('Logged in');
       return Home();
     }
   }

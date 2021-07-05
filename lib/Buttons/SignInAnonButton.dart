@@ -11,13 +11,7 @@ class SignInAnonButton extends StatelessWidget{
     return ElevatedButton(
       onPressed: () async {
         dynamic result = await _auth.signInAnon();
-        if(result == null){
-          print('error signing in');
-        }
-        else{
-          print('signed in');
-          print(result);
-        }
+        // Navigator.popAndPushNamed(context, 'Home');
       },
       child: Padding(
         padding: const EdgeInsets.all(5.0),
