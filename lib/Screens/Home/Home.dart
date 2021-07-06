@@ -44,7 +44,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+
       appBar: AppBar(
         backgroundColor: Colors.green[800],
         title: Text('Home',
@@ -65,10 +67,13 @@ class _HomeState extends State<Home> {
             ],
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.center,
+
           ),
+
         ],
         mainAxisAlignment: MainAxisAlignment.center,
       ),
+
     );
   }
 }

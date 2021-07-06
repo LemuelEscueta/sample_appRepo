@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart' show AuthResult, FirebaseAuth, FirebaseUser;
-import 'package:sample_app/User.dart';
+import 'package:sample_app/Services/User.dart';
 
 class AuthService {
 

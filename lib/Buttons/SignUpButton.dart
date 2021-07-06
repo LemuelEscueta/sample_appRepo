@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_app/Services/Auth.dart';
 
-class SignOutButton extends StatelessWidget{
-
+class  SignUpButton extends StatelessWidget {
   final AuthService _auth = AuthService();
 
   @override
@@ -11,14 +10,14 @@ class SignOutButton extends StatelessWidget{
 
     return ElevatedButton(
       onPressed: () async {
-        await _auth.signOut();
-        Navigator.popAndPushNamed(context, 'Authenticate');
+        //await _auth.signOut();
+        Navigator.pushReplacementNamed(context, 'RegisterPage');
       },
 
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Text(
-          'Sign Out',
+          'Sign up',
           style: TextStyle(
             color: Colors.white,
             fontSize: 13,

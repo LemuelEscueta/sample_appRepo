@@ -2,10 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:sample_app/Screens/Authenticate/Authenticate.dart';
 import 'package:sample_app/Screens/Home/Home.dart';
-import 'package:sample_app/User.dart';
+import 'package:sample_app/Services/User.dart';
 
-class Wrapper extends StatelessWidget{
+class Wrapper extends StatefulWidget{
 
+  @override
+  State<Wrapper> createState() => _WrapperState();
+}
+
+class _WrapperState extends State<Wrapper> {
   @override
   Widget build(BuildContext context){
 
@@ -19,5 +24,6 @@ class Wrapper extends StatelessWidget{
       print('Logged in');
       return Home();
     }
+
   }
 }

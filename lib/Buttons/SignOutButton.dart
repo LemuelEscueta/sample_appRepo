@@ -12,7 +12,7 @@ class SignOutButton extends StatelessWidget{
     return ElevatedButton(
       onPressed: () async {
         await _auth.signOut();
-        // Navigator.popAndPushNamed(context, 'Authenticate');
+        Navigator.pushReplacementNamed(context, 'Authenticate');
       },
 
       child: Padding(

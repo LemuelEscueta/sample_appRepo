@@ -2,21 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_app/Services/Auth.dart';
 
-class SignInAnonButton extends StatelessWidget{
-
+class RegisterButton extends StatelessWidget{
   final AuthService _auth = AuthService();
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
+
     return ElevatedButton(
       onPressed: () async {
-        dynamic result = await _auth.signInAnon();
-        Navigator.pushReplacementNamed(context, 'Home');
+       // await _auth.signOut();
+        Navigator.pushReplacementNamed(context, 'LoginPage');
       },
+
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Text(
-          'Sign in as Guest',
+          'Register',
           style: TextStyle(
             color: Colors.white,
             fontSize: 13,

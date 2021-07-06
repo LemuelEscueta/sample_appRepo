@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'Screens/InputWrapper.dart';
+import '../Screens/InputWrapper.dart';
 
 class LoginPage extends StatelessWidget{
   @override

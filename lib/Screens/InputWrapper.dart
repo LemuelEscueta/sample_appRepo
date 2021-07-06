@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_app/Buttons/SignInAnonButton.dart';
+import 'package:sample_app/Buttons/SignUpButton.dart';
 
-import '../InputField.dart';
+import '../Services/InputField.dart';
 import '../Buttons/LoginButton.dart';
 
 class InputWrapper extends StatelessWidget{
@@ -14,8 +15,8 @@ class InputWrapper extends StatelessWidget{
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10)
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
               ),
                child: InputField(),
             ),
@@ -26,6 +27,8 @@ class InputWrapper extends StatelessWidget{
             ),
             SizedBox(height: 10,),
             LoginButton(),
+            SizedBox(height: 10,),
+            SignUpButton(),
             SizedBox(height: 10,),
             SignInAnonButton(),
           ],
