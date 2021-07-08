@@ -1,10 +1,10 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_app/Buttons/RegisterButton.dart';
 import 'package:sample_app/Services/RegisterWrapper.dart';
 
 class RegisterPage extends StatefulWidget{
-
   late final Function toggleView;
 
   RegisterPage({required void Function() toggleViewParam})
@@ -17,8 +17,12 @@ class RegisterPage extends StatefulWidget{
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+
+
   @override
   Widget build(BuildContext context) {
+
+    RegisterWrapper _registerWrapper;
 
     return Scaffold(
 
@@ -44,6 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
       backgroundColor: Colors.green[100],
       body: Center(
+
         child: Column(
           children: <Widget>[
             Container(
@@ -52,14 +57,17 @@ class _RegisterPageState extends State<RegisterPage> {
               decoration: BoxDecoration(
                   color: Colors.grey[100],
                   borderRadius: BorderRadius.circular(10)),
-              child: RegisterWrapper(),
+              child: _registerWrapper = RegisterWrapper(),
+
             ),
             SizedBox(height: 10.0),
-            RegisterButton(),
+            RegisterButton(
+              pressedRegister: (){},
+              registerWrapper: _registerWrapper,
+            ),
           ],
         ),
       ),
     );
-
   }
 }
