@@ -6,6 +6,21 @@ class SignInWrapper extends StatefulWidget {
 
   final _formKey = GlobalKey<FormState>();
 
+  final AuthService _auth = AuthService();
+
+  String email = '';
+  String password = '';
+  String error = '';
+  dynamic result;
+
+  Future<bool> OnPressedSignIn() async {
+    if(_formKey.currentState!.validate()){
+      result = await _auth.signInWithEmailAndPassword(email, password);
+      return true;
+    }
+    else return false;
+  }
+
   @override
   State<SignInWrapper> createState() => _SignInWrapperState();
 }
@@ -14,15 +29,6 @@ class _SignInWrapperState extends State<SignInWrapper> {
   final AuthService _auth = AuthService();
 
   late final Function toggleView;
-
-  SignIn(Function toggleViewParam)
-  {
-    this.toggleView = toggleViewParam;
-  }
-
-  String email = '';
-
-  String password = '';
 
   @override
   Widget build(BuildContext context){
@@ -47,7 +53,7 @@ class _SignInWrapperState extends State<SignInWrapper> {
                 border: InputBorder.none,
               ),
               onChanged: (val) {
-                email = val;
+                widget.email = val;
               },
             ),
           ),
@@ -69,7 +75,7 @@ class _SignInWrapperState extends State<SignInWrapper> {
               ),
               obscureText: true,
               onChanged: (val) {
-                password = val;
+                widget.password = val;
               },
             ),
           ),

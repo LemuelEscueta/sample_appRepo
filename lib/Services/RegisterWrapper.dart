@@ -13,10 +13,12 @@ class RegisterWrapper extends StatefulWidget {
   String error = '';
   dynamic result;
 
-  Future<void> OnPressedRegister() async {
+  Future<bool> OnPressedRegister() async {
     if(_formKey.currentState!.validate()){
       result = await _auth.registerWithEmailAndPassword(email, password);
+      return true;
     }
+    else return false;
   }
 
   @override
@@ -78,10 +80,5 @@ class _RegisterWrapperState extends State<RegisterWrapper> {
         ],
       ),
     );
-  }
-
-  Future<void> OnPressedRegisterSetState() async{
-    setState(()=> this.widget.error = 'please supply with valid email');
-    print('Not registered correctly');
   }
 }

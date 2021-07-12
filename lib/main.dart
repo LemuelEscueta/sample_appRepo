@@ -20,11 +20,12 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
 
     return StreamProvider<TheUser>.value(
-      value: AuthService().user,
+      catchError: (_,__) => null,
       initialData: null,
-      child: new MaterialApp(
+      value: AuthService().user,
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'Wrapper',
+        initialRoute: 'LoginPage',
         routes: {
           'Home': (context) => Home(),
           'LoginPage': (context) => LoginPage(),

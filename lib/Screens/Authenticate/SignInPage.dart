@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_app/Buttons/LoginButton.dart';
+import 'package:sample_app/Buttons/SignInButton.dart';
 import 'package:sample_app/Services/SignInWrapper.dart';
 
 class SignInPage extends StatefulWidget {
@@ -20,9 +21,19 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
 
+    SignInWrapper signInWrapper;
+
     return Scaffold(
 
       appBar: AppBar(
+        leading: FlatButton.icon(
+          onPressed: (){
+            Navigator.pushReplacementNamed(context, 'LoginPage');
+          },
+          icon: Icon(Icons.home),
+          label: Text('Home'),
+        ),
+        leadingWidth: 100,
         backgroundColor: Colors.green[800],
         title: Text('Sign In',
           style: TextStyle(
@@ -52,10 +63,10 @@ class _SignInPageState extends State<SignInPage> {
               decoration: BoxDecoration(
                   color: Colors.grey[100],
                   borderRadius: BorderRadius.circular(10)),
-              child: SignInWrapper(),
+              child: signInWrapper = SignInWrapper(),
             ),
             SizedBox(height: 10.0),
-            LoginButton(),
+            SignInButton(pressedSignIn: (){}, signInWrapper: signInWrapper),
           ],
         ),
       ),

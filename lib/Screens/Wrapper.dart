@@ -14,7 +14,8 @@ class _WrapperState extends State<Wrapper> {
   @override
   Widget build(BuildContext context){
 
-    final user = Provider.of<TheUser>(context);
+    final user;
+    user = Provider.of<TheUser>(context);
 
     if(user == null){
       print('Logged out');

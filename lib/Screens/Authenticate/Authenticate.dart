@@ -2,9 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_app/Screens/Authenticate/RegisterPage.dart';
 import 'package:sample_app/Screens/Authenticate/SignInPage.dart';
-import 'package:sample_app/Services/RegisterWrapper.dart';
-
-import '../../Services/LoginPage.dart';
 
 class Authenticate extends StatefulWidget {
 
@@ -23,9 +20,11 @@ class _AuthenticateState extends State<Authenticate> {
   @override
   Widget build(BuildContext context) {
     if(showSignIn){
+      print(showSignIn);
       return SignInPage(toggleViewParam: toggleView);
     }
     else{
+      print(showSignIn);
       return RegisterPage(toggleViewParam: toggleView);
     }
   }

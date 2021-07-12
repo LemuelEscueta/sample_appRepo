@@ -27,6 +27,14 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
 
       appBar: AppBar(
+        leading: FlatButton.icon(
+          onPressed: (){
+            Navigator.pushReplacementNamed(context, 'LoginPage');
+          },
+          icon: Icon(Icons.home),
+          label: Text('Home'),
+        ),
+        leadingWidth: 100,
         backgroundColor: Colors.green[800],
         title: Text('Register',
           style: TextStyle(
@@ -58,11 +66,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   color: Colors.grey[100],
                   borderRadius: BorderRadius.circular(10)),
               child: _registerWrapper = RegisterWrapper(),
-
             ),
             SizedBox(height: 10.0),
             RegisterButton(
-              pressedRegister: (){},
+              pressedRegister: (){
+              },
               registerWrapper: _registerWrapper,
             ),
           ],

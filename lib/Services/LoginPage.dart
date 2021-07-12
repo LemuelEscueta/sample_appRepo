@@ -1,11 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sample_app/Buttons/LoginButton.dart';
+import 'package:sample_app/Buttons/SignInAnonButton.dart';
+import 'package:sample_app/Buttons/SignUpButton.dart';
+import 'InputField.dart';
 
-import '../Screens/InputWrapper.dart';
+class LoginPage extends StatefulWidget{
 
-class LoginPage extends StatelessWidget{
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+
+
   @override
   Widget build(BuildContext context){
+
+    InputField inputField;
 
     return Scaffold(
       body: Center(
@@ -35,11 +48,34 @@ class LoginPage extends StatelessWidget{
               ),
             ),
             SizedBox(height: 60.0),
-            InputWrapper()
+            Padding(
+              padding: EdgeInsets.all((30.0)),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: inputField = InputField(),
+                  ),
+                  SizedBox(height: 20.0,),
+                  Text(
+                    'Forgot Password',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  SizedBox(height: 10,),
+                  LoginButton(pressedLogin: (){}, inputField: inputField),
+                  SizedBox(height: 10,),
+                  SignUpButton(),
+                  SizedBox(height: 10,),
+                  SignInAnonButton(),
+                ],
+              ),
+            ),
           ],
         ),
         heightFactor: 5.0,
-
       ),
       backgroundColor: Colors.lightGreenAccent[100],
     );

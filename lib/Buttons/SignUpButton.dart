@@ -11,7 +11,7 @@ class  SignUpButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () async {
         //await _auth.signOut();
-        Navigator.pushReplacementNamed(context, 'RegisterPage');
+        Navigator.pushReplacementNamed(context, 'Authenticate');
       },
 
       child: Padding(
