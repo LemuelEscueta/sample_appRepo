@@ -13,6 +13,8 @@ class SignInWrapper extends StatefulWidget {
   String error = '';
   dynamic result;
 
+  bool loading = false;
+
   Future<bool> OnPressedSignIn() async {
     if(_formKey.currentState!.validate()){
       result = await _auth.signInWithEmailAndPassword(email, password);

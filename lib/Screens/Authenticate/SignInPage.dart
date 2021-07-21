@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sample_app/Buttons/LoginButton.dart';
 import 'package:sample_app/Buttons/SignInButton.dart';
+import 'package:sample_app/Services/Loading.dart';
 import 'package:sample_app/Services/SignInWrapper.dart';
 
 class SignInPage extends StatefulWidget {
@@ -21,10 +21,9 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
 
-    SignInWrapper signInWrapper;
+    SignInWrapper signInWrapper = SignInWrapper();
 
-    return Scaffold(
-
+    return signInWrapper.loading ? Loading() : Scaffold(
       appBar: AppBar(
         leading: FlatButton.icon(
           onPressed: (){
@@ -54,21 +53,26 @@ class _SignInPageState extends State<SignInPage> {
       ),
 
       backgroundColor: Colors.green[100],
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(30.0),
-              margin: EdgeInsets.all(30.0),
-              decoration: BoxDecoration(
-                  color: Colors.grey[100],
-                  borderRadius: BorderRadius.circular(10)),
-              child: signInWrapper = SignInWrapper(),
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          Center(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(30.0),
+                  margin: EdgeInsets.all(30.0),
+                  decoration: BoxDecoration(
+                      color: Colors.grey[100],
+                      borderRadius: BorderRadius.circular(10)),
+                  child: signInWrapper,
+                ),
+                SizedBox(height: 10.0),
+                SignInButton(pressedSignIn: (){}, signInWrapper: signInWrapper),
+              ],
             ),
-            SizedBox(height: 10.0),
-            SignInButton(pressedSignIn: (){}, signInWrapper: signInWrapper),
-          ],
-        ),
+          ),
+        ],
       ),
     );
 

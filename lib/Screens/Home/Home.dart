@@ -1,39 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sample_app/Buttons/SignOutButton.dart';
+import 'package:sample_app/Model/Contact.dart';
+import 'package:sample_app/Services/Auth.dart';
+import 'package:sample_app/Screens/Home/ContactList.dart';
+import 'package:sample_app/Services/Database.dart';
+import 'package:provider/provider.dart';
 
-// class Home extends StatelessWidget{
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: Colors.green[800],
-//         title: Text('Home',
-//           style: TextStyle(
-//             fontSize: 30,
-//             fontWeight: FontWeight.bold,
-//             color: Colors.white,
-//           ),
-//         ),
-//         centerTitle: true,
-//       ),
-//       backgroundColor: Colors.green[100],
-//       body: Row(
-//         children: [
-//           Column(
-//             children: <Widget>[
-//               SignOutButton(),
-//             ],
-//             crossAxisAlignment: CrossAxisAlignment.end,
-//             mainAxisAlignment: MainAxisAlignment.center,
-//           ),
-//         ],
-//         mainAxisAlignment: MainAxisAlignment.center,
-//       ),
-//     );
-//   }
-// }
+import 'AddContact.dart';
 
 class Home extends StatefulWidget {
 
@@ -42,36 +16,66 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  final AuthService _auth = AuthService();
+
+  int _selectedIndex = 0;
+
+  void _onItemTap(int index){
+    setState(() => _selectedIndex = index);
+  }
+
+  List<Widget> _widgets = <Widget>[
+    BrewList(),
+    AddContact(),
+  ];
+
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-
-      appBar: AppBar(
-        backgroundColor: Colors.green[800],
-        title: Text('Home',
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
+    return StreamProvider<List<Contact>?>.value(
+      value: DatabaseService().contact,
+      initialData: null,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.green[800],
+          title: Text('Home',
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
+          centerTitle: true,
+          actions: <Widget>[
+          FlatButton.icon(
+              onPressed: () async {
+                await _auth.signOut();
+                Navigator.pushReplacementNamed(context, 'Authenticate');
+              },
+              icon: Icon(Icons.person),
+              label: Text('Sign out'))
+          ],
         ),
-        centerTitle: true,
-      ),
-      backgroundColor: Colors.green[100],
-      body: Row(
-        children: [
-          Column(
-            children: <Widget>[
-              SignOutButton(),
+        backgroundColor: Colors.green[100],
+        body: Center(
+          child: _widgets.elementAt(_selectedIndex),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+            items: const<BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.view_list),
+                title: Text('View List'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.add),
+                title: Text('Add Contact'),
+              ),
             ],
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.center,
-          ),
-        ],
-        mainAxisAlignment: MainAxisAlignment.center,
+          currentIndex: _selectedIndex,
+          onTap: _onItemTap,
+        ),
       ),
-
     );
   }
 }

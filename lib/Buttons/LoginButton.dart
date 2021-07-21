@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_app/Services/InputField.dart';
-import 'package:sample_app/Services/LoginPage.dart';
 
 class LoginButton extends StatefulWidget{
   final VoidCallback pressedLogin;

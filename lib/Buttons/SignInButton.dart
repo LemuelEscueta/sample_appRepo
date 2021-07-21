@@ -25,9 +25,13 @@ class _SignInButtonState extends State<SignInButton> {
         ElevatedButton(
           onPressed: () async {
             if(await widget.signInWrapper.OnPressedSignIn()){
+              setState(() => widget.signInWrapper.loading = true);
               pressedRegister:
               if(widget.signInWrapper.result == null){
-                setState(() => widget.signInWrapper.error = 'Could not sign in with those credentials');
+                setState(() {
+                    widget.signInWrapper.error = 'Could not sign in with those credentials';
+                    widget.signInWrapper.loading = false;
+                });
               }
               else {
                 setState(() => widget.signInWrapper.error = '');

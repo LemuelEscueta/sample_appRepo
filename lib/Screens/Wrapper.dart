@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:sample_app/Screens/Authenticate/Authenticate.dart';
 import 'package:sample_app/Screens/Home/Home.dart';
-import 'package:sample_app/Services/User.dart';
+import 'package:sample_app/Model/User.dart';
 
 class Wrapper extends StatefulWidget{
 

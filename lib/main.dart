@@ -8,10 +8,10 @@ import 'package:sample_app/Screens/Authenticate/RegisterPage.dart';
 import 'package:sample_app/Screens/Home/Home.dart';
 import 'package:sample_app/Screens/Wrapper.dart';
 import 'package:sample_app/Services/Auth.dart';
-import 'package:sample_app/Services/User.dart';
+import 'package:sample_app/Model/User.dart';
 
 import 'Screens/Authenticate/SignInPage.dart';
-import 'Services/LoginPage.dart';
+import 'Screens/Authenticate/LoginPage.dart';
 
 void main() => runApp(MyApp());
 

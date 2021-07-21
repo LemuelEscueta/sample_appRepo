@@ -25,7 +25,6 @@ class _RegisterPageState extends State<RegisterPage> {
     RegisterWrapper _registerWrapper;
 
     return Scaffold(
-
       appBar: AppBar(
         leading: FlatButton.icon(
           onPressed: (){
@@ -55,26 +54,30 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
 
       backgroundColor: Colors.green[100],
-      body: Center(
-
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(30.0),
-              margin: EdgeInsets.all(30.0),
-              decoration: BoxDecoration(
-                  color: Colors.grey[100],
-                  borderRadius: BorderRadius.circular(10)),
-              child: _registerWrapper = RegisterWrapper(),
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          Center(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(30.0),
+                  margin: EdgeInsets.all(30.0),
+                  decoration: BoxDecoration(
+                      color: Colors.grey[100],
+                      borderRadius: BorderRadius.circular(10)),
+                  child: _registerWrapper = RegisterWrapper(),
+                ),
+                SizedBox(height: 10.0),
+                RegisterButton(
+                  pressedRegister: (){
+                  },
+                  registerWrapper: _registerWrapper,
+                ),
+              ],
             ),
-            SizedBox(height: 10.0),
-            RegisterButton(
-              pressedRegister: (){
-              },
-              registerWrapper: _registerWrapper,
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
