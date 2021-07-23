@@ -27,12 +27,7 @@ class _HomeState extends State<Home> {
   }
 
   List<Widget> _widgets = <Widget>[
-    StreamProvider<TheUser>.value(
-      catchError: (_,__) => null,
-      initialData: null,
-      value: AuthService().user,
-      child: ContactList(),
-    ),
+    ContactList(),
     AddContact(),
   ];
 
