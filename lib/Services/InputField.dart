@@ -14,7 +14,7 @@ class InputField extends StatefulWidget{
   String error = '';
   dynamic result;
 
-  Future<bool> OnPressedLogin() async {
+  Future<bool> onPressedLogin() async {
     if(_formKey.currentState!.validate()){
       result = await _auth.signInWithEmailAndPassword(email, password);
       return true;

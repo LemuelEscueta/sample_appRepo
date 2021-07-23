@@ -1,16 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sample_app/Services/Auth.dart';
 
 class  SignUpButton extends StatelessWidget {
-  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
 
     return ElevatedButton(
       onPressed: () async {
-        //await _auth.signOut();
         Navigator.pushReplacementNamed(context, 'Authenticate');
       },
 

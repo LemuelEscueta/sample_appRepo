@@ -23,7 +23,7 @@ class _RegisterButtonState extends State<RegisterButton> {
       children: [
         ElevatedButton(
           onPressed: () async {
-            if(await widget.registerWrapper.OnPressedRegister()){
+            if(await widget.registerWrapper.onPressedRegister()){
                 pressedRegister:
                 if(widget.registerWrapper.result == null){
                   setState(() => widget.registerWrapper.error = 'Please enter a valid email');

@@ -15,7 +15,7 @@ class SignInWrapper extends StatefulWidget {
 
   bool loading = false;
 
-  Future<bool> OnPressedSignIn() async {
+  Future<bool> onPressedSignIn() async {
     if(_formKey.currentState!.validate()){
       result = await _auth.signInWithEmailAndPassword(email, password);
       return true;
@@ -28,7 +28,6 @@ class SignInWrapper extends StatefulWidget {
 }
 
 class _SignInWrapperState extends State<SignInWrapper> {
-  final AuthService _auth = AuthService();
 
   late final Function toggleView;
 

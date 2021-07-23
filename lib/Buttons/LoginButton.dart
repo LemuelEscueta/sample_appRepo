@@ -19,7 +19,7 @@ class _LoginButtonState extends State<LoginButton> {
       children: [
         ElevatedButton(
           onPressed: ()async {
-            if(await widget.inputField.OnPressedLogin()){
+            if(await widget.inputField.onPressedLogin()){
               pressedLogin:
               if(widget.inputField.result == null){
                 setState(() => widget.inputField.error = 'Incorrect credentials');

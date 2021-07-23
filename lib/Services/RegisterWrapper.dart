@@ -13,7 +13,7 @@ class RegisterWrapper extends StatefulWidget {
   String error = '';
   dynamic result;
 
-  Future<bool> OnPressedRegister() async {
+  Future<bool> onPressedRegister() async {
     if(_formKey.currentState!.validate()){
       result = await _auth.registerWithEmailAndPassword(email, password);
       return true;

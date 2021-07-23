@@ -1,7 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_app/Model/Contact.dart';
+import 'package:sample_app/Model/User.dart';
 import 'package:sample_app/Services/Auth.dart';
 import 'package:sample_app/Screens/Home/ContactList.dart';
 import 'package:sample_app/Services/Database.dart';
@@ -26,7 +27,12 @@ class _HomeState extends State<Home> {
   }
 
   List<Widget> _widgets = <Widget>[
-    BrewList(),
+    StreamProvider<TheUser>.value(
+      catchError: (_,__) => null,
+      initialData: null,
+      value: AuthService().user,
+      child: ContactList(),
+    ),
     AddContact(),
   ];
 
@@ -65,11 +71,11 @@ class _HomeState extends State<Home> {
             items: const<BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.view_list),
-                title: Text('View List'),
+                label: 'View List',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.add),
-                title: Text('Add Contact'),
+                label: 'Add Contact',
               ),
             ],
           currentIndex: _selectedIndex,

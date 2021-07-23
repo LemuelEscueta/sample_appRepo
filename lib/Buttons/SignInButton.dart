@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sample_app/Services/Auth.dart';
-import 'package:sample_app/Services/RegisterWrapper.dart';
+
 import 'package:sample_app/Services/SignInWrapper.dart';
 
 class SignInButton extends StatefulWidget{
@@ -15,7 +14,6 @@ class SignInButton extends StatefulWidget{
 }
 
 class _SignInButtonState extends State<SignInButton> {
-  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +22,7 @@ class _SignInButtonState extends State<SignInButton> {
       children: [
         ElevatedButton(
           onPressed: () async {
-            if(await widget.signInWrapper.OnPressedSignIn()){
+            if(await widget.signInWrapper.onPressedSignIn()){
               setState(() => widget.signInWrapper.loading = true);
               pressedRegister:
               if(widget.signInWrapper.result == null){
