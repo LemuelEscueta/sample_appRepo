@@ -11,11 +11,15 @@ class DatabaseService {
   final CollectionReference contacts = Firestore.instance.collection('Contacts');
 
   Future updateUserData(String name, String number, String address) async{
-    return await contacts.document(uid).setData({
+    return await contacts.document(uid).collection(("UserContacts")).add({
       'Name': name,
       'Phone': number,
       'Address': address,
     });
+  }
+
+  Future deleteContact() async{
+    return await contacts.document(uid).delete().whenComplete(() => null);
   }
 
   List<Contact>? _contactListFromSnapshot(QuerySnapshot snapshot) {
@@ -43,7 +47,9 @@ class DatabaseService {
     return contacts.snapshots().map(_contactListFromSnapshot);
   }
 
-  Stream<ContactData> get userData{
-    return contacts.document(uid).snapshots().map(_userDataFromSnapshot);
+  Stream<ContactData> get contactData{
+    return contacts.document(uid).collection("UserContacts").document(uid).snapshots().map(_userDataFromSnapshot);
   }
+
+
 }

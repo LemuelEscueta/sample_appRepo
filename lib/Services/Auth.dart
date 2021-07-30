@@ -14,6 +14,10 @@ class AuthService {
     return _auth.onAuthStateChanged.map(_userFromFirebaseUse);
   }
 
+  Future<String> getCurrentUID() async{
+    return (await _auth.currentUser()).uid;
+  }
+
   //sign in Anon
   Future signInAnon() async {
     try{
@@ -51,6 +55,7 @@ class AuthService {
       return null;
     }
   }
+  
 
   //sign out
   Future signOut() async{
