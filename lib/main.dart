@@ -10,6 +10,7 @@ import 'package:sample_app/Screens/Wrapper.dart';
 import 'package:sample_app/Services/Auth.dart';
 import 'package:sample_app/Model/User.dart';
 
+import 'Screens/Authenticate/GoogleSignInPage.dart';
 import 'Screens/Authenticate/SignInPage.dart';
 import 'Screens/Authenticate/LoginPage.dart';
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget{
           'RegisterPage': (context) => RegisterPage(),
           'SignInPage': (context) => SignInPage(),
           'Authenticate': (context) => Authenticate(),
+          'GoogleSignInPage': (context) => GoogleSignInPage(),
         },
       ),
     );

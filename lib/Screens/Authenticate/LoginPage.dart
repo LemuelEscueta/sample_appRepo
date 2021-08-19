@@ -61,17 +61,23 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       child: inputField = InputField(),
                     ),
-                    SizedBox(height: 20.0,),
+                    SizedBox(height: 10.0,),
                     Text(
                       'Forgot Password',
                       style: TextStyle(color: Colors.grey),
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(height: 1,),
                     LoginButton(pressedLogin: (){}, inputField: inputField),
-                    SizedBox(height: 10,),
+                    SizedBox(height: 1,),
                     SignUpButton(),
-                    SizedBox(height: 10,),
+                    SizedBox(height: 1,),
                     SignInAnonButton(),
+                    SizedBox(height: 1),
+                    ElevatedButton(
+                        onPressed: (){
+                          Navigator.pushReplacementNamed(context, 'GoogleSignInPage');
+                        },
+                        child: Text('Log in with Google')),
                   ],
                 ),
               ),
